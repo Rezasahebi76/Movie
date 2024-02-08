@@ -1,6 +1,7 @@
 package com.android.movie.network.di
 
 import com.android.movie.network.interceptor.AuthorizationInterceptor
+import com.android.movie.network.service.MoviesApis
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -47,5 +48,11 @@ object NetworkModule {
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .client(okHttpClient)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMoviesApi(retrofit: Retrofit): MoviesApis {
+        return retrofit.create(MoviesApis::class.java)
     }
 }
