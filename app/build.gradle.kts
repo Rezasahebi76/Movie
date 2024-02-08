@@ -22,6 +22,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        buildConfigField("String","TOKEN","\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGFlMTBlNTdhNjhhM2ExZWQ5NzQ2NjAzYzcyNTc5NyIsInN1YiI6IjY1YzNlY2M1MjQ3NmYyMDE0OWZlNDczZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eXs70tcdxWzq7pEqhfQ3NAddwaYMijxfXSkphkVWqZ4\"")
     }
 
     buildTypes {
@@ -33,19 +34,25 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
+        buildConfig = true
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -91,8 +98,8 @@ dependencies {
     implementation("androidx.room:room-paging:$roomVersion")
 
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 }
 
 kapt {
