@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -87,5 +89,12 @@ dependencies {
     ksp("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("androidx.room:room-paging:$roomVersion")
+
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 }
 
+kapt {
+    correctErrorTypes = true
+}
