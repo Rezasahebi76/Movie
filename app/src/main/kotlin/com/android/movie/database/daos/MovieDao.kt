@@ -9,7 +9,7 @@ import com.android.movie.database.entities.MovieEntity
 interface MovieDao {
 
     @Upsert
-    fun insertMovies(movieEntity: MovieEntity)
+    fun insertMovies(movieEntity: List<MovieEntity>)
 
     @Query("DELETE FROM movies")
     fun clearAllMovies()
