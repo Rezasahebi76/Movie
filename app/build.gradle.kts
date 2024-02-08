@@ -23,6 +23,7 @@ android {
             useSupportLibrary = true
         }
         buildConfigField("String","TOKEN","\"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGFlMTBlNTdhNjhhM2ExZWQ5NzQ2NjAzYzcyNTc5NyIsInN1YiI6IjY1YzNlY2M1MjQ3NmYyMDE0OWZlNDczZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eXs70tcdxWzq7pEqhfQ3NAddwaYMijxfXSkphkVWqZ4\"")
+        buildConfigField("String","DATABASE_NAME","\"movie_db\"")
     }
 
     buildTypes {
