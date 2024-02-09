@@ -1,4 +1,4 @@
-package com.android.movie.data.datasource.local
+package com.android.movie.data.datasource.local.movie
 
 import androidx.paging.PagingSource
 import com.android.movie.common.dispatcher.Dispatcher
