@@ -1,4 +1,4 @@
-package com.android.movie.network
+package com.android.movie.data.datasource.remote
 
 import com.android.movie.network.model.MoviesResponse
 
