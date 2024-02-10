@@ -1,6 +1,5 @@
 package com.android.movie.network.model.movie
 
-import com.android.movie.network.model.configuration.MovieResponse
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
