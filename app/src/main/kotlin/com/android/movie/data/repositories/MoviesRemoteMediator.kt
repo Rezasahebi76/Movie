@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.android.movie.data.datasource.local.movie.MoviesLocalDataSource
 import com.android.movie.data.datasource.local.preferences.PreferencesLocalDataSource
-import com.android.movie.data.datasource.remote.MoviesRemoteDataSource
+import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSource
 import com.android.movie.data.mapper.toMovieEntity
 import com.android.movie.database.entities.MovieEntity
 import kotlinx.coroutines.flow.first

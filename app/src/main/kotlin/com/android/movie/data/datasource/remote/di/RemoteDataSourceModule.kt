@@ -1,7 +1,7 @@
 package com.android.movie.data.datasource.remote.di
 
-import com.android.movie.data.datasource.remote.MoviesRemoteDataSource
-import com.android.movie.data.datasource.remote.MoviesRemoteDataSourceImpl
+import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSource
+import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

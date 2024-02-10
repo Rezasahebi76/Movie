@@ -1,4 +1,4 @@
-package com.android.movie.data.repositories
+package com.android.movie.data.repositories.movie
 
 import androidx.paging.PagingData
 import com.android.movie.models.Movie

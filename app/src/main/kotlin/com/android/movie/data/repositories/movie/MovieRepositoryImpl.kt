@@ -1,4 +1,4 @@
-package com.android.movie.data.repositories
+package com.android.movie.data.repositories.movie
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.android.movie.data.datasource.local.movie.MoviesLocalDataSource
 import com.android.movie.data.mapper.toMovie
+import com.android.movie.data.repositories.MoviesRemoteMediator
 import com.android.movie.models.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -28,5 +29,4 @@ class MovieRepositoryImpl @Inject constructor(
             }
         }
     }
-
 }

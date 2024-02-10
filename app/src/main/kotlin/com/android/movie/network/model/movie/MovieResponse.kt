@@ -1,4 +1,4 @@
-package com.android.movie.network.model
+package com.android.movie.network.model.movie
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

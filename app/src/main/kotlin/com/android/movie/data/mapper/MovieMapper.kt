@@ -2,7 +2,7 @@ package com.android.movie.data.mapper
 
 import com.android.movie.database.entities.MovieEntity
 import com.android.movie.models.Movie
-import com.android.movie.network.model.MovieResponse
+import com.android.movie.network.model.movie.MovieResponse
 
 fun MovieResponse.toMovieEntity():MovieEntity {
     return MovieEntity(
