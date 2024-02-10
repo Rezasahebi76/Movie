@@ -1,7 +1,8 @@
 package com.android.movie.network.di
 
 import com.android.movie.network.interceptor.AuthorizationInterceptor
-import com.android.movie.network.service.MoviesApis
+import com.android.movie.network.apis.ConfigurationApis
+import com.android.movie.network.apis.MoviesApis
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -54,5 +55,11 @@ object NetworkModule {
     @Singleton
     fun provideMoviesApi(retrofit: Retrofit): MoviesApis {
         return retrofit.create(MoviesApis::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideConfigurationApi(retrofit: Retrofit): ConfigurationApis {
+        return retrofit.create(ConfigurationApis::class.java)
     }
 }

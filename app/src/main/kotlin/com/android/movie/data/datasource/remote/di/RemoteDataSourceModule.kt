@@ -1,5 +1,7 @@
 package com.android.movie.data.datasource.remote.di
 
+import com.android.movie.data.datasource.remote.configuration.ConfigurationRemoteDataSource
+import com.android.movie.data.datasource.remote.configuration.ConfigurationRemoteDataSourceImpl
 import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSource
 import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSourceImpl
 import dagger.Binds
@@ -13,4 +15,7 @@ interface RemoteDataSourceModule {
 
     @Binds
     fun bindMoviesRemoteDataSource(impl: MoviesRemoteDataSourceImpl): MoviesRemoteDataSource
+
+    @Binds
+    fun bindConfigurationRemoteDataSource(impl: ConfigurationRemoteDataSourceImpl): ConfigurationRemoteDataSource
 }
