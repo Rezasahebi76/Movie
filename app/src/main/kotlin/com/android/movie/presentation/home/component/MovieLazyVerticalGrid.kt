@@ -89,7 +89,6 @@ internal fun MovieLazyVerticalGrid(
     }
 }
 
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun Movie(
