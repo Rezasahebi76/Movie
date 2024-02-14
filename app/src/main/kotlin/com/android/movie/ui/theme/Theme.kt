@@ -46,6 +46,7 @@ fun MovieTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = MovieShape,
         content = content
     )
 }
