@@ -1,4 +1,4 @@
-package com.android.movie.data.repositories
+package com.android.movie.data.repositories.movie
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -11,7 +11,7 @@ import com.android.movie.database.entities.MovieEntity
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class MoviesRemoteMediator @Inject constructor(
+class MovieRemoteMediator @Inject constructor(
     private val moviesRemoteDataSource: MoviesRemoteDataSource,
     private val moviesLocalDataSource: MoviesLocalDataSource,
 ) : RemoteMediator<Int, MovieEntity>() {
