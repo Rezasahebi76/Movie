@@ -7,7 +7,6 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.android.movie.data.datasource.local.movie.MoviesLocalDataSource
 import com.android.movie.data.mapper.toMovie
-import com.android.movie.data.repositories.MoviesRemoteMediator
 import com.android.movie.models.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

@@ -10,7 +10,7 @@ class ConfigurationRepositoryImpl @Inject constructor(
     private val remoteDataSource: ConfigurationRemoteDataSource
 ) : ConfigurationRepository {
 
-    override val imageBaseUrl: Flow<String?> = localDataSource.ImageBaseUrl
+    override val imageBaseUrl: Flow<String?> = localDataSource.imageBaseUrl
 
     override suspend fun fetchImageBaseUrl() {
         val response = remoteDataSource.getImageConfiguration()

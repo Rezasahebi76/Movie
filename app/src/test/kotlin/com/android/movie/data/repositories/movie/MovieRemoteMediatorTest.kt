@@ -7,10 +7,10 @@ import androidx.paging.PagingSource.LoadResult.Page
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.android.movie.data.datasource.local.movie.MoviesLocalDataSource
-import com.android.movie.data.datasource.remote.MoviesRemoteDataSource
+import com.android.movie.data.datasource.remote.movie.MoviesRemoteDataSource
 import com.android.movie.database.entities.MovieEntity
-import com.android.movie.network.model.MovieResponse
-import com.android.movie.network.model.MoviesResponse
+import com.android.movie.network.model.movie.MovieResponse
+import com.android.movie.network.model.movie.MoviesResponse
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
