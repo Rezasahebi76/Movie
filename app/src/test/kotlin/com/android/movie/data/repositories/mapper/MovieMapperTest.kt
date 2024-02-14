@@ -4,8 +4,8 @@ import com.android.movie.data.mapper.toMovie
 import com.android.movie.data.mapper.toMovieEntities
 import com.android.movie.database.entities.MovieEntity
 import com.android.movie.models.Movie
-import com.android.movie.network.model.MovieResponse
-import com.android.movie.network.model.MoviesResponse
+import com.android.movie.network.model.movie.MovieResponse
+import com.android.movie.network.model.movie.MoviesResponse
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

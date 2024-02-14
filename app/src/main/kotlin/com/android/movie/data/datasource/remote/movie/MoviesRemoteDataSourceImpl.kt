@@ -1,9 +1,9 @@
-package com.android.movie.data.datasource.remote
+package com.android.movie.data.datasource.remote.movie
 
 import com.android.movie.common.dispatcher.Dispatcher
 import com.android.movie.common.dispatcher.MovieDispatchers
-import com.android.movie.network.model.MoviesResponse
-import com.android.movie.network.service.MoviesApis
+import com.android.movie.network.apis.MoviesApis
+import com.android.movie.network.model.movie.MoviesResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

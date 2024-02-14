@@ -28,5 +28,4 @@ class MovieRepositoryImpl @Inject constructor(
             }
         }
     }
-
 }

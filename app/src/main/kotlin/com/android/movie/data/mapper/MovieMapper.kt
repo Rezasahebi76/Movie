@@ -2,7 +2,7 @@ package com.android.movie.data.mapper
 
 import com.android.movie.database.entities.MovieEntity
 import com.android.movie.models.Movie
-import com.android.movie.network.model.MoviesResponse
+import com.android.movie.network.model.movie.MoviesResponse
 
 fun MoviesResponse.toMovieEntities(): List<MovieEntity> {
     val nextPage = if (page == totalPages) null else page + 1
