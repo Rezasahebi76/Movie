@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Movie</string>
+    <string name="retry">Retry</string>
+    <string name="try_again">Try Again</string>
+    <string name="discover">Discover</string>
+    <string name="connection_glitch">Connection glitch</string>
+    <string name="connection_exception_description">Seems like there\'s an internet connection problem.</string>
+    <string name="server_error">Server Error</string>
+    <string name="server_error_description">An error occurred while communicating with the server. Please try again later.</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="something_went_wrong_description">Apologies, an unexpected error occurred. We\'re working to fix it. Please try again later.</string>
 </resources>
