@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
     private val localDataSource: MoviesLocalDataSource,
-    private val remoteMediator: MoviesRemoteMediator
+    private val remoteMediator: MovieRemoteMediator
 ) : MovieRepository {
     @OptIn(ExperimentalPagingApi::class)
     override fun getMoviePagingData(): Flow<PagingData<Movie>> {
