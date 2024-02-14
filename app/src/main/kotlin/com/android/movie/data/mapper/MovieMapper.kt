@@ -2,17 +2,21 @@ package com.android.movie.data.mapper
 
 import com.android.movie.database.entities.MovieEntity
 import com.android.movie.models.Movie
-import com.android.movie.network.model.MovieResponse
+import com.android.movie.network.model.MoviesResponse
 
-fun MovieResponse.toMovieEntity():MovieEntity {
-    return MovieEntity(
-        id = id,
-        title = title,
-        posterPath = posterPath
-    )
+fun MoviesResponse.toMovieEntities(): List<MovieEntity> {
+    val nextPage = if (page == totalPages) null else page + 1
+    return results.map {
+        MovieEntity(
+            remoteId = it.id,
+            title = it.title,
+            posterPath = it.posterPath,
+            nextPage = nextPage
+        )
+    }
 }
 
-fun MovieEntity.toMovie():Movie {
+fun MovieEntity.toMovie(): Movie {
     return Movie(
         id = id,
         title = title,

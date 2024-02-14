@@ -5,20 +5,15 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.android.movie.data.datasource.local.movie.MoviesLocalDataSource
-import com.android.movie.data.datasource.local.preferences.PreferencesLocalDataSource
 import com.android.movie.data.datasource.remote.MoviesRemoteDataSource
-import com.android.movie.data.mapper.toMovieEntity
+import com.android.movie.data.mapper.toMovieEntities
 import com.android.movie.database.entities.MovieEntity
-import kotlinx.coroutines.flow.first
-import retrofit2.HttpException
-import java.io.IOException
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
 class MoviesRemoteMediator @Inject constructor(
-    private val remoteDataSource: MoviesRemoteDataSource,
-    private val localDataSource: MoviesLocalDataSource,
-    private val preferencesLocalDataSource: PreferencesLocalDataSource
+    private val moviesRemoteDataSource: MoviesRemoteDataSource,
+    private val moviesLocalDataSource: MoviesLocalDataSource,
 ) : RemoteMediator<Int, MovieEntity>() {
 
     override suspend fun load(
@@ -26,34 +21,37 @@ class MoviesRemoteMediator @Inject constructor(
         state: PagingState<Int, MovieEntity>
     ): MediatorResult {
         return try {
-            val nextPage: Int = when (loadType) {
+            val page = when (loadType) {
                 LoadType.REFRESH -> {
-                    1
+                    STARTING_PAGE_INDEX
                 }
 
-                LoadType.PREPEND ->
+                LoadType.PREPEND -> {
                     return MediatorResult.Success(endOfPaginationReached = true)
+                }
 
                 LoadType.APPEND -> {
-                    preferencesLocalDataSource.lastPage.first() + 1
+                    val lastItem = state.lastItemOrNull()
+
+                    lastItem?.nextPage
+                        ?: return MediatorResult.Success(endOfPaginationReached = lastItem != null)
                 }
             }
-            val response = remoteDataSource.getUpcomingMovies(nextPage)
-            val movies = response.results.map { it.toMovieEntity() }
+            val response = moviesRemoteDataSource.getUpcomingMovies(page)
+            val movies = response.toMovieEntities()
             if (loadType == LoadType.REFRESH) {
-                localDataSource.refreshAllMovies(movies)
+                moviesLocalDataSource.refreshAllMovies(movies)
             } else {
-                localDataSource.insertMovies(movies)
+                moviesLocalDataSource.insertMovies(movies)
             }
-            preferencesLocalDataSource.updateLastPage(nextPage)
-            MediatorResult.Success(endOfPaginationReached = response.totalPages == nextPage)
-        } catch (e: IOException) {
-            MediatorResult.Error(e)
-        } catch (e: HttpException) {
-            MediatorResult.Error(e)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            MediatorResult.Error(e)
+            MediatorResult.Success(endOfPaginationReached = response.totalPages == response.page)
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+            MediatorResult.Error(exception)
         }
+    }
+
+    companion object {
+        private const val STARTING_PAGE_INDEX = 1
     }
 }
