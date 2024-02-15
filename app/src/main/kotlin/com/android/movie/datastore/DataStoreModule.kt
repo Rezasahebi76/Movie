@@ -28,11 +28,10 @@ object DataStoreModule {
         context: Context,
         @Dispatcher(MovieDispatchers.IO)
         ioDispatcher: CoroutineDispatcher
-    ): DataStore<Preferences> {
-        return PreferenceDataStoreFactory.create(
-            scope = CoroutineScope(ioDispatcher + SupervisorJob())
-        ) {
-            context.preferencesDataStoreFile("preferences")
-        }
+    ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
+        scope = CoroutineScope(ioDispatcher + SupervisorJob())
+    ) {
+        context.preferencesDataStoreFile("preferences")
     }
+
 }

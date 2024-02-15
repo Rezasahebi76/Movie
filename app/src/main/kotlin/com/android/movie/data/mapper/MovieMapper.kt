@@ -16,10 +16,8 @@ fun MoviesResponse.toMovieEntities(): List<MovieEntity> {
     }
 }
 
-fun MovieEntity.toMovie(): Movie {
-    return Movie(
-        id = id,
-        title = title,
-        posterPath = posterPath
-    )
-}
+fun MovieEntity.toMovie(): Movie = Movie(
+    id = id,
+    title = title,
+    posterPath = posterPath
+)

@@ -56,7 +56,7 @@ fun HomeScreen(
 ) {
     val imageUrlResult by viewModel.imageBaseUrl.collectAsStateWithLifecycle()
 
-    val lazyPagingItems = viewModel.pager.collectAsLazyPagingItems()
+    val pagingItems = viewModel.pager.collectAsLazyPagingItems()
 
     val scope = rememberCoroutineScope()
 
@@ -67,7 +67,7 @@ fun HomeScreen(
             SnackbarHost(hostState = snackbarHostState)
         },
         topBar = {
-            if (imageUrlResult is Result.Success) {
+            if (imageUrlResult is Result.Success && pagingItems.itemCount > 0) {
                 MovieAppBar(
                     modifier = Modifier.fillMaxWidth(),
                     title = {
@@ -91,16 +91,16 @@ fun HomeScreen(
                 .padding(contentPadding)
         ) {
             HomeScreen(
-                pagingItems = lazyPagingItems,
+                pagingItems = pagingItems,
                 imageBaseUrlResult = imageUrlResult,
                 onRetryClick = {
                     if (imageUrlResult is Result.Error) {
                         viewModel.getImageUrl()
                     }
-                    if (lazyPagingItems.loadState.refresh is LoadState.Error ||
-                        lazyPagingItems.loadState.append is LoadState.Error
+                    if (pagingItems.loadState.refresh is LoadState.Error ||
+                        pagingItems.loadState.append is LoadState.Error
                     ) {
-                        lazyPagingItems.retry()
+                        pagingItems.retry()
                     }
                 },
                 onMovieClick = {

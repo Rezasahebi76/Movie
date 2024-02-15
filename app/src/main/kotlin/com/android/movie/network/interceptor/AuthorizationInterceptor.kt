@@ -1,6 +1,5 @@
 package com.android.movie.network.interceptor
 
-import com.android.movie.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
@@ -10,8 +9,13 @@ class AuthorizationInterceptor @Inject constructor() : Interceptor {
         proceed(
             request()
                 .newBuilder()
-                .addHeader("Authorization", BuildConfig.TOKEN)
+                .addHeader("Authorization", "Bearer $TOKEN")
                 .build()
-        )        
+        )
+    }
+
+    companion object {
+        private const val TOKEN =
+            "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZGFlMTBlNTdhNjhhM2ExZWQ5NzQ2NjAzYzcyNTc5NyIsInN1YiI6IjY1YzNlY2M1MjQ3NmYyMDE0OWZlNDczZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eXs70tcdxWzq7pEqhfQ3NAddwaYMijxfXSkphkVWqZ4"
     }
 }

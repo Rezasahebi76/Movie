@@ -46,7 +46,6 @@ class MovieRemoteMediator @Inject constructor(
             }
             MediatorResult.Success(endOfPaginationReached = response.totalPages == response.page)
         } catch (exception: Exception) {
-            exception.printStackTrace()
             MediatorResult.Error(exception)
         }
     }
