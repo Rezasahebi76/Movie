@@ -1,8 +1,8 @@
 package com.android.movie.network.di
 
-import com.android.movie.network.interceptor.AuthorizationInterceptor
 import com.android.movie.network.apis.ConfigurationApis
 import com.android.movie.network.apis.MoviesApis
+import com.android.movie.network.interceptor.AuthorizationInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -22,44 +22,37 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideJson(): Json {
-        return Json {
-            ignoreUnknownKeys = true
-        }
+    fun provideJson(): Json = Json {
+        ignoreUnknownKeys = true
     }
+
 
     @Provides
     @Singleton
     fun provideOkHttpClient(
         authorizationInterceptor: AuthorizationInterceptor,
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(authorizationInterceptor)
-            .build()
-    }
+    ): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(authorizationInterceptor)
+        .build()
 
     @Provides
     @Singleton
     fun provideRetrofit(
         json: Json,
         okHttpClient: OkHttpClient
-    ): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-            .client(okHttpClient)
-            .build()
-    }
+    ): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+        .client(okHttpClient)
+        .build()
 
     @Provides
     @Singleton
-    fun provideMoviesApi(retrofit: Retrofit): MoviesApis {
-        return retrofit.create(MoviesApis::class.java)
-    }
+    fun provideMoviesApi(retrofit: Retrofit): MoviesApis = retrofit.create(MoviesApis::class.java)
 
     @Provides
     @Singleton
-    fun provideConfigurationApi(retrofit: Retrofit): ConfigurationApis {
-        return retrofit.create(ConfigurationApis::class.java)
-    }
+    fun provideConfigurationApi(retrofit: Retrofit): ConfigurationApis =
+        retrofit.create(ConfigurationApis::class.java)
+
 }

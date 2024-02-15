@@ -50,7 +50,6 @@ val Typography = Typography(
         fontSize = 14.sp,
         lineHeight = 24.sp,
     ),
-
     bodyMedium = TextStyle(
         fontFamily = MovieFontFamily,
         fontWeight = FontWeight.SemiBold,

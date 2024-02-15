@@ -2,7 +2,6 @@ package com.android.movie.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.android.movie.BuildConfig
 import com.android.movie.database.AppDatabase
 import com.android.movie.database.daos.MovieDao
 import dagger.Module
@@ -16,16 +15,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    @Singleton
-    @Provides
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.DATABASE_NAME)
-            .build()
-    }
+    private const val DATABASE_NAME = "movie_db"
 
     @Singleton
     @Provides
-    fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
-        return appDatabase.movieDao
-    }
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
+        Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+            .build()
+
+    @Singleton
+    @Provides
+    fun provideMovieDao(appDatabase: AppDatabase): MovieDao =
+        appDatabase.movieDao
 }

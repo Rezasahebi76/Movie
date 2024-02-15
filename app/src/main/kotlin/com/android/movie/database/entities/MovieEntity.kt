@@ -11,6 +11,7 @@ data class MovieEntity(
     val title: String,
     @ColumnInfo("poster_path")
     val posterPath: String?,
+    @ColumnInfo("remote_id")
     val remoteId: Int,
     @ColumnInfo("next_page")
     val nextPage: Int?

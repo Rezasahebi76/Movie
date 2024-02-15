@@ -10,7 +10,7 @@ import com.android.movie.database.entities.MovieEntity
         MovieEntity::class
     ],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
